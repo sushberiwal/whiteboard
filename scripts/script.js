@@ -9,11 +9,12 @@
     penSize = 2;
     stickyCounter = 0;
     penColor = 'black';
-
+    
+    init();
     function init() {
-        var rect = board.getBoundingClientRect();
-        board.height = rect.height;
-        board.width = rect.width;
+        // var rect = board.getBoundingClientRect();
+        // board.height = rect.height;
+        // board.width = rect.width;
 
         window.addEventListener('resize', onResize, false);
         onResize();
@@ -95,7 +96,7 @@
             ctx.moveTo(location.x, location.y);
             location = getLocation();
             ctx.lineTo(location.x, location.y);
-            ctx.stroke();
+            ctx.stroke();                                                                                                                                                                                                   
             ctx.closePath()
         }
         if (isStickyMoving == true && mode == 'sticky') {
@@ -120,11 +121,10 @@
     };
 
     board.addEventListener("mousedown", onMouseDown);
-    board.addEventListener("mousemove", onMouseMove, false);
-    board.addEventListener("mouseup", onMouseUp, false);
-    document.addEventListener('keydown', onKeyDown, false);
+    board.addEventListener("mousemove", onMouseMove);
+    board.addEventListener("mouseup", onMouseUp);
+    document.addEventListener('keydown', onKeyDown);
 
-    init();
 
     function onResize() {
         board.width = window.innerWidth - 5;
